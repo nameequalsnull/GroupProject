@@ -8,7 +8,7 @@ public class Food extends Item {
 	
 	public int eatFood()
 	{//returns the amount of hp you wish the food to heal
-		return 1;
+		return 1; 
 	}
 
 }

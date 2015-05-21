@@ -1,5 +1,4 @@
 
-
 public class NPCInventory {
 
 	Item items[] = null;

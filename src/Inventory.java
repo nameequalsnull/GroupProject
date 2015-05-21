@@ -13,6 +13,8 @@ public class Inventory
 	public Inventory()
 	{
 		this.items = new Item[20];
+		for(int i = 0; i < 20; i++)
+			items[i]=null;
 	}
 	
 	public Item getItem(int index)
@@ -27,7 +29,7 @@ public class Inventory
 		{
 			items[res].setQuantity(items[res].getQuantity() + number);
 		}
-		else if(items.length == 20)
+		else if(items.length == 20 && res == -1)
 		{
 			System.out.println("Inventory is full, cannont add another item");
 		}
@@ -39,6 +41,7 @@ public class Inventory
 				{
 					items[i] = item;
 					items[i].setQuantity(1);
+					break;
 				}
 			}
 		}
@@ -48,9 +51,11 @@ public class Inventory
 	{
 		for(int i = 0; i < items.length; i++)
 		{
-			if(items[i].getName() == item.getName())
+			System.out.println("Debug");
+			if(items[i] != null)
 			{
-				return i;
+				if(items[i].getType() == item.getType())
+					return i;
 			}
 		}
 		return -1;
@@ -75,7 +80,7 @@ public class Inventory
 		}
 	}
 	
-	public void displayItems(Item[] items)
+	public void displayItems()
 	{
 		if(items.length == 0)
 		{
@@ -85,7 +90,8 @@ public class Inventory
 		{
 			 for(int i = 0; i < items.length; i++)
 			 {
-				 System.out.println(items[i] + "x" + items[i].getQuantity());
+				 if(items[i] != null)
+					 System.out.println(items[i] + "x" + items[i].getQuantity());
 			 }
 		}
 	}
