@@ -9,10 +9,12 @@
 public class Inventory 
 {
 	Item items[] = null;
+	int numItems = 0;
 	
 	public Inventory()
 	{
 		this.items = new Item[20];
+		this.numItems = 0;
 		for(int i = 0; i < 20; i++)
 			items[i]=null;
 	}
@@ -27,9 +29,10 @@ public class Inventory
 		int res = inInventory(item);
 		if(res >= 0)
 		{
+			System.out.println("You added " + number + " " + items[res].getName() + " to your inventory");
 			items[res].setQuantity(items[res].getQuantity() + number);
 		}
-		else if(items.length == 20 && res == -1)
+		else if(numItems == 20 && res == -1)
 		{
 			System.out.println("Inventory is full, cannont add another item");
 		}
@@ -40,7 +43,8 @@ public class Inventory
 				if(items[i] == null)
 				{
 					items[i] = item;
-					items[i].setQuantity(1);
+					items[i].setQuantity(number);
+					System.out.println("You added " + number + " " + items[i].getName() + " to your inventory");
 					break;
 				}
 			}
@@ -51,7 +55,6 @@ public class Inventory
 	{
 		for(int i = 0; i < items.length; i++)
 		{
-			System.out.println("Debug");
 			if(items[i] != null)
 			{
 				if(items[i].getType() == item.getType())
@@ -59,6 +62,28 @@ public class Inventory
 			}
 		}
 		return -1;
+	}
+	
+	public void useItem(int index)
+	{
+		if(index < 0)
+			return;
+		else
+		{
+			for(int i = 0; i < items.length; i++)
+			{
+				if(i == index)
+				{
+					if(items[i].getQuantity() <= 0)
+						items[i] = null;
+					else
+					{
+						items[i].useItem();
+						items[i].setQuantity(items[i].getQuantity() - 1);
+					}
+				}
+			}
+		}
 	}
 		
 	public void removeItem(String name, int number)
@@ -91,7 +116,7 @@ public class Inventory
 			 for(int i = 0; i < items.length; i++)
 			 {
 				 if(items[i] != null)
-					 System.out.println(items[i] + "x" + items[i].getQuantity());
+					 System.out.println(items[i].getName() + "x" + items[i].getQuantity());
 			 }
 		}
 	}

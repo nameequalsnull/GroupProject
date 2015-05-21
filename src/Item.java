@@ -15,6 +15,8 @@ public abstract class Item {
 		this.price = price;
 	}
 	
+	public abstract int useItem();
+	
 	public String getName() {
 		return this.name;
 	}
