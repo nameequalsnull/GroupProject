@@ -2,7 +2,7 @@
 public class Food extends Item {
 
 	public Food() {
-		super("Food", "Heals you", 2);
+		super("Food", "Heals you", 2, 350);
 		// TODO Auto-generated constructor stub
 	}
 	
