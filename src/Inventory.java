@@ -74,13 +74,15 @@ public class Inventory
 			{
 				if(i == index)
 				{
-					if(items[i].getQuantity() <= 0)
-						items[i] = null;
-					else
-					{
+					//if(items[i].getQuantity() <= 0)
+					//	items[i] = null;
+					//else
+					//{
 						items[i].useItem();
 						items[i].setQuantity(items[i].getQuantity() - 1);
-					}
+						if(items[i].getQuantity() == 0)
+							items[i] = null;
+					//}
 				}
 			}
 		}

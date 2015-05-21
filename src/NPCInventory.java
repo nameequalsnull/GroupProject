@@ -1,7 +1,8 @@
 
 public class NPCInventory {
 
-	Item items[] = null;
+	Item items[];
+	int numItems;
 	
 	public NPCInventory()
 	{
@@ -21,7 +22,7 @@ public class NPCInventory {
 	
 	public void displayItems(Item[] items)
 	{
-		if(items.length == 0)
+		if(this.numItems == 0)
 		{
 			System.out.println("NPC is sold-out");
 		}
