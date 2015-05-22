@@ -8,7 +8,23 @@ public class NPCInventory implements I_Inventory
 	public NPCInventory()
 	{
 		this.items = new Item[40];
+		numItems=3;
+		initNPCinv();
 	}
+	
+	public void initNPCinv()
+	{
+			Item food = new Food();
+			Item accpot = new AccuracyPotion();
+			Item toughpot = new ToughnessPotion();
+			food.setQuantity(1000);
+			accpot.setQuantity(1000);
+			toughpot.setQuantity(1000);
+			this.items[0] = food;
+			this.items[1] = accpot;
+			this.items[2] = toughpot;
+	}
+	
 	
 	//returns index of the item in the inventory, or -1 if not found
 	public int inInventory(Item item)
@@ -30,6 +46,7 @@ public class NPCInventory implements I_Inventory
 		Item nItem;
 		nItem = this.items[index];
 		nItem.setQuantity(number);
+		System.out.println("The NPC hands you the " + nItem.getName());
 		return nItem;
 	}
 	
@@ -48,6 +65,7 @@ public class NPCInventory implements I_Inventory
 		}
 		else
 		{
+			 System.out.println("----NPC Inventory----");
 			 for(int i = 0; i < numItems; i++)
 			 {
 				 System.out.println(items[i].getName() + "x" + items[i].getQuantity());

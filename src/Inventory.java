@@ -113,11 +113,13 @@ public class Inventory implements I_Inventory
 		}
 		else
 		{
+			 System.out.println("----Your Inventory----");
 			 for(int i = 0; i < items.length; i++)
 			 {
 				 if(items[i] != null)
 					 System.out.println(items[i].getName() + "x" + items[i].getQuantity());
 			 }
+			 System.out.println();
 		}
 	}
 	
