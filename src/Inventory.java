@@ -1,12 +1,8 @@
 /**
- * 
- */
-
-/**
  * @author David
  *
  */
-public class Inventory 
+public class Inventory implements I_Inventory
 {
 	Item items[] = null;
 	int numItems = 0;
@@ -78,6 +74,7 @@ public class Inventory
 					//	items[i] = null;
 					//else
 					//{
+						//System.out.println("item used" + " " + items[i].getName());
 						items[i].useItem();
 						items[i].setQuantity(items[i].getQuantity() - 1);
 						if(items[i].getQuantity() == 0)
@@ -102,11 +99,12 @@ public class Inventory
 						items[i] = null;
 					else
 						items[i].setQuantity(items[i].getQuantity() - number);
+					break;
 				}
 			}
 		}
 	}
-	
+
 	public void displayItems()
 	{
 		if(items.length == 0)
