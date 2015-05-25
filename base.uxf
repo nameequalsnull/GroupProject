@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>54</x>
+      <y>96</y>
+      <w>216</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>/::Item/
+--
+-name: String
+-description: String
+-price: int
+-type: int
+-quantity = 0: int
+--
++Item(String name, String desc, int type, int price): ctor
++useItem(): int
++getName(): String
++getDesc(): String
++getType(): int
++getQuantity(): int
++setQuantity(int newquantity): void
++getPrice(): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>300</x>
+      <y>168</y>
+      <w>174</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>::Inventory
+--
+~items[] = null: Item
+~numItems = 0: int
+--
++Inventory(): ctor
++getItem(int index): Item
++addItem(Item item, int number): void
++inInventory(Item item): int
++useItem(int index): void
++removeItem(String name, int number): void
++displayItems(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>486</x>
+      <y>168</y>
+      <w>144</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>::NPCInventory
+--
+~items[]: Item
+~numItems: int
+--
++NPCInventory(): ctor
++initNPCinv(): void
++inInventory(Item item): int
++getItem(int index, int number): Item
++sellItem(Item item, int number): int
++displayItems(): void
++addItem(Item item, int number): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>408</x>
+      <y>54</y>
+      <w>150</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+::I_Inventory
+--
+--
++addItem(Item item, int number): void
++inInventory(Item item): int
++displayItems(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>18</x>
+      <y>294</y>
+      <w>96</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>::AccuracyPotion
+--
+--
++AccuracyPotion(): ctor
++useItem(): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>120</x>
+      <y>294</y>
+      <w>60</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>::Food
+--
+--
++Food(): ctor
++useItem(): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>192</x>
+      <y>294</y>
+      <w>108</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>::ToughnessPotion
+--
+--
++ToughnessPotion(): ctor
++useItem(): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>108</x>
+      <y>30</y>
+      <w>102</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>::InventoryTester
+--
+--
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>60</x>
+      <y>450</y>
+      <w>156</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>::Map
+--
+~map: int[][]
+~curloc = 2: int
+~maxwidth: int
+~maxheight: int
+--
++Map(): ctor
++fillmap(): void
++explore(int direction): int
++displayMap(): void
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>468</x>
+      <y>108</y>
+      <w>102</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>18;18;90;60</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>372</x>
+      <y>108</y>
+      <w>102</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>90;18;18;60</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>252</x>
+      <y>72</y>
+      <w>168</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>18;48;156;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>168</x>
+      <y>240</y>
+      <w>84</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>18;18;72;54</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>126</x>
+      <y>240</y>
+      <w>30</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>18;18;18;54</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>54</x>
+      <y>240</y>
+      <w>54</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>42;18;18;54</additional_attributes>
+  </element>
+</diagram>
