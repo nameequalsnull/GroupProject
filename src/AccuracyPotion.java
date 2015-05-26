@@ -7,11 +7,11 @@ public class AccuracyPotion extends Item {
 	
 	public int useItem()
 	{
-		double accuracy;
+		int accuracy;
 		System.out.println("You take a sip of your Accuracy Potion, it tastes strange.");
 		return 2;
-		//accuracy = GoodGuy.getHitChance + 2;
-		//Goodguy.setHitChance(accuracy);
+		//accuracy = getAcc() + 2;
+		//Character.setAcc(accuracy);
 	}
 
 }

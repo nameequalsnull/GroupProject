@@ -25,6 +25,7 @@ public class InventoryTester {
 		System.out.println("selling");
 		//selling 500 food to shop
 		int ret = npcinv.sellItem(npcinv.getItem(0, 500), 500);
+		System.out.println("returned amt: " + ret);
 		myinv.removeItem("Food", 500);
 
 		myinv.displayItems();

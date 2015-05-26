@@ -7,5 +7,4 @@ public interface I_Inventory
 	
 	public void displayItems();
 	
-	
 }

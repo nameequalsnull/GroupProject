@@ -94,12 +94,12 @@ public class Map {
 		map.fillmap();
 		System.out.println("display map");
 		map.displayMap();
-		map.explore(1);
-		map.displayMap();
-		map.explore(2);
-		map.displayMap();
-		map.explore(3);
-		map.displayMap();
-		
+//		map.explore(1); //right
+//		map.displayMap();
+//		map.explore(2); //diag
+//		map.displayMap();
+//		map.explore(3); //down
+//		map.displayMap();
+//		
 	}
 }
