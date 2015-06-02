@@ -5,11 +5,13 @@ public class InventoryTester {
 	{
 		Inventory myinv = new Inventory();
 		NPCInventory npcinv = new NPCInventory();
+		ItemFactory fac = new ItemFactory();
+		
 		System.out.println("Starting NPC inventory");
 		npcinv.displayItems();
 		//npcinv.addItem(new Food(), 1000);
 				
-		myinv.addItem(new Food(), 20);
+		myinv.addItem(fac.getItem("FOOD"), 20);
 		myinv.addItem(new AccuracyPotion(), 234);
 		myinv.displayItems();
 		myinv.addItem(new ToughnessPotion(), 20);

@@ -1,6 +1,8 @@
 
 public class Food extends Item {
 
+	private int healamt;
+	
 	public Food() {
 		super("Food", "Heals you", 2, 350);
 		// TODO Auto-generated constructor stub
