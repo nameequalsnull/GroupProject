@@ -5,13 +5,23 @@ public abstract class Item {
 	private int price;
 	private int type;
 	private int quantity = 0;
-	
-	public Item(String name, String desc, int type, int price)
+	private int cn;
+	public Item(String name, String desc, int cn, int price)
 	{
 		this.name = name;
 		this.description = desc;
-		this.type = type;
+		this.cn = cn;
 		this.price = price;
+	}
+	
+	public int getConditionNumeric()
+	{
+		return this.cn;
+	}	
+	
+	public void changeCondition(int c)
+	{
+		this.cn = c;
 	}
 	
 	public abstract int useItem();

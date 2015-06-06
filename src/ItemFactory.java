@@ -15,8 +15,8 @@ public class ItemFactory
 		         return new Helmet();
 		  } else if(name.equalsIgnoreCase("SHIELD")){
 		         return new Shield();
-		  } else if(name.equalsIgnoreCase("WEAPON")){
-	             return new Weapon();
+		  } else if(name.equalsIgnoreCase("DAGGER")){
+	             return new Dagger();
 	  	  } else {
 	  		  System.out.println("Item not found");
 	  	  }
