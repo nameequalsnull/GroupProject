@@ -2,7 +2,7 @@ public class Knight extends Player
 {
    public Knight()
    {
-      super("", "Knight", 75, 30, .65, .50, .30, 10, 10, 25, 5);
+      super("Knight", "Knight", 75, 30, .65, .50, .30, 10, 10, 25, 5);
       this.setWeapon(new LongSword());
    }
    

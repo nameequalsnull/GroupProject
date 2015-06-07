@@ -13,6 +13,8 @@ public class Inventory implements I_Inventory
 		this.numItems = 0;
 		for(int i = 0; i < 20; i++)
 			items[i]=null;
+		items[0] = new Food();
+		items[0].setQuantity(10);
 	}
 	
 	public Item getItem(int index)

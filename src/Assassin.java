@@ -2,7 +2,7 @@ public class Assassin extends Player
 {
    public Assassin()
    {
-      super("", "Assassin", 40, 30, .80, .15, .60, 4, 10, 20, 4);
+      super("Assassin", "Assassin", 40, 30, .80, .15, .60, 4, 10, 20, 4);
       this.setWeapon(new Dagger());
    }
    

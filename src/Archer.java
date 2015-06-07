@@ -2,7 +2,7 @@ public class Archer extends Player
 {
    public Archer()
    {
-      super("", "Archer", 60, 25, .70, .20, .50, 4, 2, 11, 6);
+      super("Archer", "Archer", 60, 25, .70, .20, .50, 4, 2, 11, 6);
       this.setWeapon(new Longbow());
    }
    

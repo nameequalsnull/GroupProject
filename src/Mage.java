@@ -2,7 +2,7 @@ public class Mage extends Player
 {
    public Mage()
    {
-      super("", "Mage", 50, 20, .75, .30, .40, 5, 3, 15, 7);
+      super("Mage", "Mage", 50, 20, .75, .30, .40, 5, 3, 15, 7);
       this.setWeapon(new FireBall());
    }
    

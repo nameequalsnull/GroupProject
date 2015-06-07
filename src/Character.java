@@ -58,7 +58,7 @@ public abstract class Character
       }
       else if(SUPER_TYPE != null && !SUPER_TYPE.equals("CHARACTER"))
       {
-         System.err.println("Character super type already defined!");
+         //System.err.println("Character super type already defined!");
          return;   
       }
       else

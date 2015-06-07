@@ -12,4 +12,10 @@ public class DefaultCharacterCreator extends CharacterCreator
       else
          return new GenericCharacter();
    }
+   
+	@Override
+	public Character createCharacter() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
