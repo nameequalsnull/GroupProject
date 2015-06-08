@@ -14,6 +14,9 @@ public abstract class Character
    private static Inventory items;
    private int gold;
    private Communicator coms;
+   protected Weapon weapon;
+   protected double hitchance;
+   boolean dead = false;
    
    private int unarmedMIN;
    private int unarmedMAX;
@@ -48,6 +51,8 @@ public abstract class Character
    
    public Communicator getCommunicator(){return this.coms;}
       
+   public void setDead(){this.dead=true;}
+   
    protected void setSuper(String s)
    {
       if(s == null || s.compareTo("") == 0 || s.compareTo("\n") == 0 || s.compareTo("\r") == 0 || s.compareTo(" ") == 0)
@@ -84,7 +89,7 @@ public abstract class Character
    Protected constructor for internal use.
    Assumes all arguments are correct and within allowed ranges.
    */
-   protected Character(int h, double dc, int umin, int umax, String n, String t)
+   protected Character(int h, double dc, int umin, int umax, String n, String t, double hc)
    {
       this.hp = h;
       this.dchance = dc;
@@ -92,6 +97,7 @@ public abstract class Character
       this.type = t;
       this.unarmedMIN = umin;
       this.unarmedMAX = umax;
+      this.hitchance = hc;
    }
    
    /*
@@ -105,8 +111,9 @@ public abstract class Character
    
    Perhaps we should change this behavior, maybe.
    */
-   public Character(String n, String t, int h, double dc, int umin, int umax)
+   public Character(String n, String t, int h, double dc, int umin, int umax, double hc)
    {
+	  this.hitchance = hc;
       if(n == null || n.compareTo("") == 0 || n.compareTo("\n") == 0 || n.compareTo("\r") == 0 || n.compareTo(" ") == 0)
          this.name = "Default Character Name";
       else
@@ -205,7 +212,7 @@ public abstract class Character
          this.items = Inventory;
    }
    
-   public boolean isDead(){return this.hp == 0;}
+   public boolean isDead(){return this.dead;}
    public boolean hasItems(){return this.items == null;}
    public abstract void displayStats();
    
@@ -239,4 +246,5 @@ public abstract class Character
       this.setGold(c.getGold() + this.getGold());
       c.setGold(0);
    }
+	
 }

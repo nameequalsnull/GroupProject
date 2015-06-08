@@ -46,10 +46,12 @@ public class Map {
 		map[0][0] = player;
 	}
 	
-	public int explore(Player player)
+	public int explore(Character player)
 	{
 		//System.out.println("height and width " + map[maxheight-1][maxwidth-1]);
 		Scanner kb = new Scanner(System.in);
+		System.out.println("Current Map");
+		displayMap(player);
 		System.out.println("Enter direction to explore");
 		System.out.println("1=right, 2=diag, 3 down");
 		int direction = kb.nextInt();
@@ -79,34 +81,67 @@ public class Map {
 						{
 							if(map[i][j+1] != null)
 							{
-								System.out.println("You have encountered a(n) " + map[i+1][j].getName() + ", it's time for battle!");
+								System.out.println("You have encountered a(n) " + map[i][j+1].getName() + ", it's time for battle!");
+								Character monster = map[i][j+1];
 								do{
-								player.attack(map[i+1][j+1]);
-								}while(!map[i][j+1].isDead() || !player.isDead());
+									System.out.println("your hp" + player.getHP() + " enemy hp:" + monster.getHP());
+									battle(player, monster);
+								}while(!monster.isDead() || !player.isDead());
 							}
-							map[i][j+1] = player;
+							if(player.isDead())
+							{
+								System.out.println("You have died, the game is over, better luck next time");
+								System.exit(-1);
+							}
+							else
+							{
+								System.out.println("Congrautlations, you are successful in battle and continue through the map");
+								map[i][j+1] = player;
+							}
 						}
 						else if(direction == 2)
 						{
 							if(map[i+1][j+1] != null)
 							{
-								System.out.println("You have encountered a(n) " + map[i+1][j].getName() + ", it's time for battle!");
+								System.out.println("You have encountered a(n) " + map[i+1][j+1].getName() + ", it's time for battle!");
+								Character monster = map[i+1][j+1];
 								do{
-								player.attack(map[i+1][j+1]);
-								}while(!map[i+1][j+1].isDead() || !player.isDead());
+									System.out.println("your hp" + player.getHP() + " enemy hp:" + monster.getHP());
+									battle(player, monster);
+								}while(!monster.isDead() || !player.isDead());
 							}
-							map[i+1][j+1] = player;
+							if(player.isDead())
+							{
+								System.out.println("You have died, the game is over, better luck next time");
+								System.exit(-1);
+							}
+							else
+							{
+								System.out.println("Congrautlations, you are successful in battle and continue through the map");
+								map[i+1][j+1] = player;
+							}
 						}
 						else //3
 						{
 							if(map[i+1][j] != null)
 							{
 								System.out.println("You have encountered a(n) " + map[i+1][j].getName() + ", it's time for battle!");
+								Character monster = map[i+1][j];
 								do{
-									player.attack(map[i+1][j]);
-									}while(!map[i+1][j+1].isDead() || !player.isDead());
+									System.out.println("your hp" + player.getHP() + " enemy hp:" + monster.getHP());
+									battle(player, monster);
+								}while(!monster.isDead() || !player.isDead());
 							}
-							map[i+1][j] = player;
+							if(player.isDead())
+							{
+								System.out.println("You have died, the game is over, better luck next time");
+								System.exit(-1);
+							}
+							else
+							{
+								System.out.println("Congrautlations, you are successful in battle and continue through the map");
+								map[i+1][j] = player;
+							}
 						}
 						found = true;
 						break;
@@ -174,4 +209,77 @@ public class Map {
 //
 //
 //	}
+	
+	public void battle(Character player, Character enemy)
+	{
+//		System.out.println("Starting Battle Stats");
+//		System.out.println(this.getName() + " vs " + enemy.getName());
+//		System.out.println(this.getHP() + " vs " + enemy.getHP());
+		//while(!this.isDead() || !enemy.isDead())
+		//{
+			Random rng = new Random();
+			double chance = (rng.nextDouble());
+			//System.out.println("chance: " + chance);
+			System.out.println();
+			if(player.hitchance > chance && (enemy.isDead()!=true || player.isDead()!=true))//player attacking enemy
+			{
+				if(enemy.getDefChance() < chance)
+				{
+					System.out.println("Your hit lands!");
+					if(player.weapon != null)
+					{   //int rm = rand.nextInt((4-1) + 1) +1;
+						int hit = rng.nextInt((player.weapon.getDmax() - player.weapon.getDmin()) + player.weapon.getDmin());
+						System.out.println("Your " + player.weapon.getName() + " hits " + hit + " on " + enemy.getName());
+						int dmg = (enemy.getHP() - hit);
+						System.out.println("new hp: " + dmg);
+						if(dmg <= 0)
+						{
+							System.out.println("1 die");
+							enemy.setDead();
+						}
+						else
+						{
+							enemy.setHP(dmg);
+							System.out.println(enemy.getName() + " has " + player.getHP() + " hp left");
+						}
+					}
+				}
+				else
+				{
+					System.out.println("Your attack has no affect");
+				}
+			}
+			else
+			{
+				System.out.println("Your attack has missed");
+			}
+			//System.out.println(" ");
+			chance = (rng.nextDouble());
+			if(enemy.hitchance > chance && (enemy.isDead()!=true || player.isDead()!=true))//enemy attacking player
+			{
+				if(player.getDefChance() < chance)
+				{
+					int hit = rng.nextInt((enemy.getUmax() - enemy.getUmin()) + enemy.getUmin());
+					System.out.println(enemy.getName() + " attacks you " + " doing " + hit + " damage");
+					int dmg = (player.getHP() - hit);
+					if(dmg <= 0)
+					{
+						System.out.println("2 die");
+						player.setDead();
+					}
+					else
+					{
+						System.out.println("new hp: " + dmg);
+						player.setHP(dmg);
+						System.out.println("You have " + player.getHP() + " hp left");
+					}
+				}
+			}
+			else
+			{
+				System.out.println(enemy.getName() + "'s attack has missed");
+			}	
+		//} 
+		
+	}
 }

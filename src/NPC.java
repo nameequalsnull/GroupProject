@@ -10,7 +10,7 @@ public abstract class NPC extends Character
    
    public NPC(int h, double dc, int umin, int umax, String n, String t)
    {
-      super(h, dc, umin, umax, n, t);
+      super(h, dc, umin, umax, n, t, 0.0);
       this.setSuper("NPC");
       this.setInventory(new Inventory());
    }

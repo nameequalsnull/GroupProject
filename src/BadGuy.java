@@ -41,7 +41,7 @@ public abstract class BadGuy extends Character
    
    public BadGuy(int h, double dc, int umin, int umax, String n, String t, int dmin, int dmax)
    {
-      super(h, dc, umin, umax, n, t);
+      super(h, dc, umin, umax, n, t, 0.0);
       this.dmin = dmin;
       this.dmax = dmax;
       this.schance = .20;
@@ -58,7 +58,7 @@ public abstract class BadGuy extends Character
    
    public BadGuy(int h, double dc, double sc, double rc, double hc, int umin, int umax, int dmin, int dmax, int ptol, int alvl, boolean armd, String w, String n, String t)
    {
-      super(h, dc, umin, umax, n, t);
+      super(h, dc, umin, umax, n, t, hc);
       this.dmin = dmin;
       this.dmax = dmax;
       this.schance = sc;

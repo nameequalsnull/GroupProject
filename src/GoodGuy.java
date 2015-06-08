@@ -1,7 +1,7 @@
 public abstract class GoodGuy extends Character
 {
       private int ap;
-      private Weapon weapon;
+      //private Weapon weapon;
       private double hchance;
       private double cchance;
       private int toughness;
@@ -36,7 +36,7 @@ public abstract class GoodGuy extends Character
       
       public GoodGuy(int h, double dc, int a, double hc, double cc, int s, int umin, int umax, String n, String t, int as)
       {
-         super(h, dc, umin, umax, n, t);
+         super(h, dc, umin, umax, n, t, hc);
          this.ap = a;
          this.atkspd = as;
          this.hchance = hc;
@@ -46,7 +46,7 @@ public abstract class GoodGuy extends Character
       
       public GoodGuy(String n, String t, int h, int a, double hc, double dc, double cc, int s, int umin, int umax, int as)
       {
-         super(n, t, h, dc, umin, umax);
+         super(n, t, h, dc, umin, umax, hc);
             
          if(a < MIN_AP_INST || a > MAX_AP)
          {
