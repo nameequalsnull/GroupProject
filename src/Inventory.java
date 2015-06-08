@@ -119,10 +119,18 @@ public class Inventory implements I_Inventory
 			 for(int i = 0; i < items.length; i++)
 			 {
 				 if(items[i] != null)
-					 System.out.println(items[i].getName() + "x" + items[i].getQuantity());
+					 System.out.println(i + ") " + items[i].getName() + "x" + items[i].getQuantity());
 			 }
 			 System.out.println();
 		}
 	}
 	
+//	public void lootItems(Character player, Character enemy)
+//	{
+//		if(enemy.hasItems() == true)
+//		{
+//			for(enemy.ite)
+//		}
+//	}
+//	
 }

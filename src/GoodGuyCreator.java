@@ -8,7 +8,7 @@ public class GoodGuyCreator extends CharacterCreator
 	   Scanner kb = new Scanner(System.in);
 		int choice;
 		do{
-			System.out.println("What kind of Character would you like to play as? (Enter the number of your choice)");
+			System.out.println("What kind of Character would you like? (Enter the number of your choice)");
 			System.out.println("1) Swordsman");
 			System.out.println("2) Wizard");
 			System.out.println("3) Generic");

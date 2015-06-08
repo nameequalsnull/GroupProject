@@ -6,13 +6,14 @@ public abstract class Player extends GoodGuy
    private int armorlvl;
    private Ability abl;
    private SpecialAbility sabl;
+   private static final int maxc =4;
    
    public Player()
    {
       super(50, .50, 50, .50, .50, 10, 3, 10, "Player1", "Player", 1);
       this.armored = false;
       this.armorlvl = 0;
-      party = new ArrayList<Character>();
+      party = new ArrayList<Character>(maxc);
       this.setInventory(new Inventory());
       this.setSuper("PLAYER");
    }
@@ -22,7 +23,7 @@ public abstract class Player extends GoodGuy
       super(n, t, h, a, hc,dc,cc,s,umin, umax, as);
       this.armored = false;
       this.armorlvl = 0;
-      party = new ArrayList<Character>();
+      party = new ArrayList<Character>(maxc);
       this.setInventory(new Inventory());
       this.setSuper("PLAYER");
    }
@@ -43,7 +44,14 @@ public abstract class Player extends GoodGuy
    
    public void addToParty(Character c)
    {
-      this.getCommunicator().playerAddParty(this, c);
+	   if(party.size() == maxc)
+	   {
+		   System.out.println("Party is already full, can't add anymore");
+	   }
+	   else
+	   {
+		   party.add(c);
+	   }
    }
    
    public int getArmorlvl()
@@ -61,8 +69,10 @@ public abstract class Player extends GoodGuy
    
    public void removeFromParty(Character c)
    {
-      party.remove(c);
-      removeEffects(c);
+	  if(party.size() >= 1)
+		  party.remove(c);
+	  else
+		  System.out.println("Party is empty");
    }
    
    public void removeFromParty(String name)
@@ -93,15 +103,15 @@ public abstract class Player extends GoodGuy
       return null;
    }
    
-   private void applyEffects(Character c)
-   {
-      this.getCommunicator().applyNPCEffects(this, c);
-   }
-   
-   private void removeEffects(Character c)
-   {
-      this.getCommunicator().removeNPCEffects(this, c);
-   }
+//   private void applyEffects(Character c)
+//   {
+//      this.getCommunicator().applyNPCEffects(this, c);
+//   }
+//   
+//   private void removeEffects(Character c)
+//   {
+//      this.getCommunicator().removeNPCEffects(this, c);
+//   }
    
    public boolean defend()
    {
@@ -143,6 +153,14 @@ public abstract class Player extends GoodGuy
    public void getInfo(Character c)
    {
       c.displayInfo();
+   }
+   
+   public void displayStats()
+   {
+	   for(Character c : party)
+	   {
+		   c.displayStats();
+	   }
    }
    
    public void currentStats()

@@ -212,6 +212,7 @@ public abstract class Character
          this.items = Inventory;
    }
    
+   
    public boolean isDead(){return this.dead;}
    public boolean hasItems(){return this.items == null;}
    public abstract void displayStats();
@@ -231,14 +232,17 @@ public abstract class Character
    public int getUmax(){return this.unarmedMAX;}
    public int getUmin(){return this.unarmedMIN;}
    
-   public void takeItems(Character c)
+   public void takeItems(Character enemy)
    {
-	  return;
-//      for(ArrayList<Item> a : c.items.getItem(1))
-//      {
-//         for(Item i : a)
-//            this.getInventory().addItem(i, 1); //1 what's this 1 for?
-//      }
+	   Inventory einv = enemy.getInventory();
+	   for(int i = 0; i < einv.numItems; i++)
+	   {
+		   Item item = einv.getItem(i);
+		   int num = einv.getItem(i).getQuantity();
+		   this.getInventory().addItem(item, num);
+		   System.out.print("You loot " + num + " " + item.getName());
+	   }
+	   System.out.println();
    }
    
    public void takeGold(Character c)

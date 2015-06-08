@@ -11,6 +11,7 @@ public class Game {
 		ItemFactory itemfac = new ItemFactory();
 		CharacterCreator playercreator = new PlayerCreator();
 		Character player = playercreator.createCharacter();
+		StoreNPC NPCstore = new StoreNPC();
 		System.out.println("You are playing as a(n) " + player.getName());
 		world.fillmap(player);
 
@@ -35,6 +36,10 @@ public class Game {
 			{
 				player.getInventory().displayItems();
 			}
+			else if(choice == 4)
+			{
+				NPCstore.interact(player);
+			}
 		}
 		
 		
@@ -47,15 +52,17 @@ public class Game {
 		System.out.println("1) Display/Explore the map");
 		System.out.println("2) Check your stats");
 		System.out.println("3) Check your inventory");
+		System.out.println("4) Talk to the store NPC");
 		System.out.println("0) Quit");
 		
 		
 		choice = kb.nextInt();
-		while(choice < 0 || choice > 3)
+		while(choice < 0 || choice > 4)
 		{
 			System.out.println("Invalid choice, try again");
 			choice = kb.nextInt();
 		}
+		System.out.println();
 		return choice;
 	}
 

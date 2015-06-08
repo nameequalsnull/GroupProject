@@ -77,25 +77,29 @@ public class Map {
 						//int monstercheck;
 						//System.out.println(i + " i + j " + j);
 						map[i][j] = null;
+						boolean died = false;
 						if(direction == 1)
 						{
 							if(map[i][j+1] != null)
 							{
-								System.out.println("You have encountered a(n) " + map[i][j+1].getName() + ", it's time for battle!");
-								Character monster = map[i][j+1];
-								do{
-									System.out.println("your hp" + player.getHP() + " enemy hp:" + monster.getHP());
-									battle(player, monster);
-								}while(!monster.isDead() || !player.isDead());
+								Character monster = map[i][j+1];								
+								System.out.println("You have encountered a(n) " + monster.getName() + ", it's time for battle!");
+								//do{
+									System.out.println("Your hp: " + player.getHP() + " Enemy hp: " + monster.getHP());
+									died = battle(player, monster);
+									if(died == false)
+											System.out.println("Congrautlations, you are successful in battle and continue through the map");
+								//}while(!monster.isDead() || !player.isDead());
 							}
-							if(player.isDead())
+							if(died == true)
 							{
 								System.out.println("You have died, the game is over, better luck next time");
 								System.exit(-1);
 							}
 							else
 							{
-								System.out.println("Congrautlations, you are successful in battle and continue through the map");
+								System.out.println("You continue through the map");
+								System.out.println();
 								map[i][j+1] = player;
 							}
 						}
@@ -103,12 +107,14 @@ public class Map {
 						{
 							if(map[i+1][j+1] != null)
 							{
-								System.out.println("You have encountered a(n) " + map[i+1][j+1].getName() + ", it's time for battle!");
 								Character monster = map[i+1][j+1];
-								do{
-									System.out.println("your hp" + player.getHP() + " enemy hp:" + monster.getHP());
-									battle(player, monster);
-								}while(!monster.isDead() || !player.isDead());
+								System.out.println("You have encountered a(n) " + monster.getName() + ", it's time for battle!");
+								//do{
+									System.out.println("Your hp: " + player.getHP() + " Enemy hp: " + monster.getHP());
+									died = battle(player, monster);
+									if(died == false)
+										System.out.println("Congrautlations, you are successful in battle and continue through the map");
+								//}while(!monster.isDead() || !player.isDead());
 							}
 							if(player.isDead())
 							{
@@ -117,7 +123,8 @@ public class Map {
 							}
 							else
 							{
-								System.out.println("Congrautlations, you are successful in battle and continue through the map");
+								System.out.println("You continue through the map");
+								System.out.println();
 								map[i+1][j+1] = player;
 							}
 						}
@@ -125,12 +132,14 @@ public class Map {
 						{
 							if(map[i+1][j] != null)
 							{
-								System.out.println("You have encountered a(n) " + map[i+1][j].getName() + ", it's time for battle!");
 								Character monster = map[i+1][j];
-								do{
-									System.out.println("your hp" + player.getHP() + " enemy hp:" + monster.getHP());
-									battle(player, monster);
-								}while(!monster.isDead() || !player.isDead());
+								System.out.println("You have encountered a(n) " + monster.getName() + ", it's time for battle!");
+								//do{
+									System.out.println("Your hp: " + player.getHP() + " Enemy hp: " + monster.getHP());
+									died = battle(player, monster);
+									if(died == false)
+										System.out.println("Congrautlations, you are successful in battle");
+								//}while(!monster.isDead() || !player.isDead());
 							}
 							if(player.isDead())
 							{
@@ -139,7 +148,8 @@ public class Map {
 							}
 							else
 							{
-								System.out.println("Congrautlations, you are successful in battle and continue through the map");
+								System.out.println("You continue through the map");
+								System.out.println();
 								map[i+1][j] = player;
 							}
 						}
@@ -210,18 +220,28 @@ public class Map {
 //
 //	}
 	
-	public void battle(Character player, Character enemy)
+	public boolean battle(Character player, Character enemy)
 	{
 //		System.out.println("Starting Battle Stats");
 //		System.out.println(this.getName() + " vs " + enemy.getName());
 //		System.out.println(this.getHP() + " vs " + enemy.getHP());
+		
 		//while(!this.isDead() || !enemy.isDead())
 		//{
-			Random rng = new Random();
-			double chance = (rng.nextDouble());
+			//Random rng = new Random();
+			//double chance = (rng.nextDouble());
 			//System.out.println("chance: " + chance);
 			System.out.println();
-			if(player.hitchance > chance && (enemy.isDead()!=true || player.isDead()!=true))//player attacking enemy
+			boolean pdead = false, edead=false;
+			int php, ehp;
+			php = player.getHP();
+			ehp = enemy.getHP();
+			
+			while(pdead == false && edead == false)
+			{
+				Random rng = new Random();
+				double chance = (rng.nextDouble());			
+			if(player.hitchance > chance)//player attacking enemy
 			{
 				if(enemy.getDefChance() < chance)
 				{
@@ -230,17 +250,18 @@ public class Map {
 					{   //int rm = rand.nextInt((4-1) + 1) +1;
 						int hit = rng.nextInt((player.weapon.getDmax() - player.weapon.getDmin()) + player.weapon.getDmin());
 						System.out.println("Your " + player.weapon.getName() + " hits " + hit + " on " + enemy.getName());
-						int dmg = (enemy.getHP() - hit);
-						System.out.println("new hp: " + dmg);
+						int dmg = (ehp - hit);
+						//System.out.println("new hp: " + dmg);
 						if(dmg <= 0)
 						{
-							System.out.println("1 die");
-							enemy.setDead();
+							System.out.println("enemy died");
+							player.takeItems(enemy);
+							edead = true;
 						}
 						else
 						{
-							enemy.setHP(dmg);
-							System.out.println(enemy.getName() + " has " + player.getHP() + " hp left");
+							ehp = dmg;
+							System.out.println(enemy.getName() + " has " + ehp + " hp left");
 						}
 					}
 				}
@@ -255,23 +276,23 @@ public class Map {
 			}
 			//System.out.println(" ");
 			chance = (rng.nextDouble());
-			if(enemy.hitchance > chance && (enemy.isDead()!=true || player.isDead()!=true))//enemy attacking player
+			if(enemy.hitchance > chance)//enemy attacking player
 			{
 				if(player.getDefChance() < chance)
 				{
 					int hit = rng.nextInt((enemy.getUmax() - enemy.getUmin()) + enemy.getUmin());
 					System.out.println(enemy.getName() + " attacks you " + " doing " + hit + " damage");
-					int dmg = (player.getHP() - hit);
+					int dmg = (php - hit);
 					if(dmg <= 0)
 					{
-						System.out.println("2 die");
-						player.setDead();
+						System.out.println("player died");
+						pdead = true;
 					}
 					else
 					{
-						System.out.println("new hp: " + dmg);
-						player.setHP(dmg);
-						System.out.println("You have " + player.getHP() + " hp left");
+						//System.out.println("new hp: " + dmg);
+						php = dmg;
+						System.out.println("You have " + php + " hp left");
 					}
 				}
 			}
@@ -279,7 +300,7 @@ public class Map {
 			{
 				System.out.println(enemy.getName() + "'s attack has missed");
 			}	
-		//} 
-		
+		} //end of the while
+		return pdead;
 	}
 }
