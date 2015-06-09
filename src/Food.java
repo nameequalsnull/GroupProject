@@ -11,7 +11,7 @@ public class Food extends Item {
 	public int useItem()
 	{//returns the amount of hp you wish the food to heal
 		System.out.println("You eat some food, it's decent");
-		return 1; 
+		return 5; 
 	}
 
 }
