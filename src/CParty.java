@@ -14,18 +14,20 @@ public class CParty
    
    public CParty(Character c)
    {
+	   party = new ArrayList<Character>(maxsize);
+	   party.add(c);
 	   this.partyldr = c;
    }
    
    public void addPlayer(Character c)
    {
-	   if(party.size() == maxsize)
+	   if(party.size() != maxsize)
 	   {
-		   System.out.println("Party is already full, can't add anymore");
+		   party.add(c);
 	   }
 	   else
 	   {
-		   party.add(c);
+		   System.out.println("Party is already full, can't add anymore");
 	   }
    }
    
@@ -55,11 +57,13 @@ public class CParty
    }
    
    
-   public void displayStats()
+   public void displayInfo()
    {
 	   for(Character c : party)
 	   {
-		   c.displayStats();
+		   System.out.print("1) ");
+		   c.displayInfo();
+		   System.out.println();
 	   }
    }
       

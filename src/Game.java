@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Game {
 	
-		static Scanner kb = new Scanner(System.in);
+	static Scanner kb = new Scanner(System.in);
 		
 	public static void main (String[] args)
 	{
@@ -11,8 +11,25 @@ public class Game {
 		ItemFactory itemfac = new ItemFactory();
 		CharacterCreator playercreator = new PlayerCreator();
 		Character player = playercreator.createCharacter();
+		CParty party = new CParty(player);
+		System.out.println(player.weapon.getName());
 		StoreNPC NPCstore = new StoreNPC();
 		System.out.println("You are playing as a(n) " + player.getName());
+		int pchoice;
+		do{
+			System.out.println("Would you like to add more members to your party or go it alone? (0 for no, 1 for yes)");
+			pchoice = kb.nextInt();
+			if(pchoice == 1)
+			{
+				Character nplayer = playercreator.createCharacter();
+				party.addPlayer(nplayer);
+				if(party.party.size() == 4)
+					break;
+			}
+		}while(pchoice != 0);
+
+		
+		
 		world.fillmap(player);
 
 		int choice = 2;
@@ -26,7 +43,7 @@ public class Game {
 			}
 			else if(choice == 1)
 			{
-				world.explore(player);
+				world.explore(player, party);
 			}
 			else if(choice == 2)
 			{
@@ -39,6 +56,10 @@ public class Game {
 			else if(choice == 4)
 			{
 				NPCstore.interact(player);
+			}
+			else if(choice == 5)
+			{
+				party.displayInfo();
 			}
 		}
 		
@@ -53,11 +74,12 @@ public class Game {
 		System.out.println("2) Check your stats");
 		System.out.println("3) Check your inventory");
 		System.out.println("4) Talk to the store NPC");
+		System.out.println("5) View your party");
 		System.out.println("0) Quit");
 		
 		
 		choice = kb.nextInt();
-		while(choice < 0 || choice > 4)
+		while(choice < 0 || choice > 5)
 		{
 			System.out.println("Invalid choice, try again");
 			choice = kb.nextInt();

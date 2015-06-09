@@ -123,8 +123,6 @@ public abstract class GoodGuy extends Character
       System.out.println("HEALTH: " + this.getHP());
       if(this.isArmed())
          System.out.println("WEAPON: " + this.getWeapon().getType());
-      else
-         System.out.println("UNARMED");
    }
    public abstract boolean defend();
    public abstract void displayStats();

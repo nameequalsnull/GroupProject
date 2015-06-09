@@ -18,11 +18,11 @@ public class NPCInventory implements I_Inventory
 			Item accpot = new AccuracyPotion();
 			Item toughpot = new ToughnessPotion();
 			food.setQuantity(1000);
-			accpot.setQuantity(1000);
-			toughpot.setQuantity(1000);
+			//accpot.setQuantity(1000);
+			//toughpot.setQuantity(1000);
 			this.items[0] = food;
-			this.items[1] = accpot;
-			this.items[2] = toughpot;
+			//this.items[1] = accpot;
+			//this.items[2] = toughpot;
 	}
 	
 	
