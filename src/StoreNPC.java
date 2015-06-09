@@ -90,15 +90,15 @@ public class StoreNPC {
 		}
 		Item item = npcinv.getItem(choice, 1);
 		System.out.println("You have " + player.getGold() + " gold");
-		System.out.println("This item costs" + item.getPrice() + " gold per");
+		System.out.println("This item costs " + item.getPrice() + " gold per");
 		System.out.println("How many would you like to buy?");
 		int amt = kb.nextInt();
-		int maxamt = 0;
-		if(amt > 0)
-			maxamt = (int) Math.floor((player.getGold()/(item.getPrice()*amt)));
+//		int maxamt = 0;
+//		if(amt > 0)
+//			maxamt = (int) Math.floor((player.getGold()/(item.getPrice()*amt)));
 		//System.out.println("The amount of "+ item.getName() + " you have is " + maxamt);
-		if (amt > maxamt)
-			amt = maxamt;
+//		if (amt > maxamt)
+//			amt = maxamt;
 		item = npcinv.getItem(choice, amt);
 		int cost = (item.getPrice() * amt);
 		//player.getInventory().removeItem(item.getName(), amt);

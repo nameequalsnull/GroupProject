@@ -316,10 +316,14 @@ public class Map {
 					return true;
 				else
 				{
-					System.out.println("Which member would you like to put in?");
-					party.displayInfo();
-					int pchoice = kb.nextInt();
-					player = party.party.get(choice);
+					if(party.party.size() > 0)
+					{
+						System.out.println("Which member would you like to put in?");
+						party.displayInfo();
+						int pchoice = kb.nextInt();
+						player = party.party.get(pchoice);
+						pdead = false;
+					}
 				}
 					
 			}

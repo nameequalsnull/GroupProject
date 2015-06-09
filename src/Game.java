@@ -12,7 +12,7 @@ public class Game {
 		CharacterCreator playercreator = new PlayerCreator();
 		Character player = playercreator.createCharacter();
 		CParty party = new CParty(player);
-		System.out.println(player.weapon.getName());
+		//System.out.println(player.weapon.getName());
 		StoreNPC NPCstore = new StoreNPC();
 		System.out.println("You are playing as a(n) " + player.getName());
 		int pchoice;

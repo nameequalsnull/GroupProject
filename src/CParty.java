@@ -59,11 +59,13 @@ public class CParty
    
    public void displayInfo()
    {
+	   int i = 0;
 	   for(Character c : party)
 	   {
-		   System.out.print("1) ");
+		   System.out.print(i + ") ");
 		   c.displayInfo();
 		   System.out.println();
+		   i++;
 	   }
    }
       

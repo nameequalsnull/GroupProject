@@ -12,7 +12,7 @@ public abstract class Character
    private String name;
    private String type;
    private static Inventory items;
-   private int gold;
+   private int gold = 1000;
    private Communicator coms;
    protected Weapon weapon;
    protected double hitchance;

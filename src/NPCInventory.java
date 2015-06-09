@@ -8,7 +8,7 @@ public class NPCInventory implements I_Inventory
 	public NPCInventory()
 	{
 		this.items = new Item[40];
-		numItems=3;
+		numItems=1;
 		initNPCinv();
 	}
 	
