@@ -81,6 +81,7 @@ public class StoreNPC {
 	{
 		System.out.println("Here are the items " + this.name + " has: ");
 		npcinv.displayItems();
+		System.out.println();
 		System.out.println("Which item would you like to buy? (-1 to sell nothing)");
 		int choice = kb.nextInt();
 		if(choice == -1)

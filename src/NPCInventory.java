@@ -71,6 +71,7 @@ public class NPCInventory implements I_Inventory
 				 System.out.println(i + ") " + items[i].getName() + "x" + items[i].getQuantity());
 			 }
 		}
+		System.out.println();
 	}
 
 	@Override
